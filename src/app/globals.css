@@ -35,6 +35,38 @@ a {
   text-decoration: none;
 }
 
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.siteHeader {
+  width: 100%;
+  padding: 16px 32px;
+}
+
+.siteHeaderInner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.siteHeaderBrand {
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.siteHeaderActions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;

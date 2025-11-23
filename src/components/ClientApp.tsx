@@ -1,15 +1,22 @@
 "use client";
 
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import styles from "@/app/page.module.css";
 import { AuthButton } from "@coinbase/cdp-react/components/AuthButton";
 import { useIsSignedIn } from "@coinbase/cdp-hooks";
-import { teams } from "@/data/teams";
+import { teams, type BrandCategory } from "@/data/teams";
 
 export default function ClientApp() {
   const { isSignedIn, isLoading } = useIsSignedIn();
+  const [isClient, setIsClient] = useState(false);
+  const [activeCategory, setActiveCategory] = useState<BrandCategory>("sports");
 
-  if (isLoading) {
+  useEffect(function () {
+    setIsClient(true);
+  }, []);
+
+  if (!isClient || isLoading) {
     return (
       <main className={styles.main}>
         <div className={styles.hero}>
@@ -37,6 +44,10 @@ export default function ClientApp() {
     );
   }
 
+  const filteredTeams = teams.filter(function (team) {
+    return team.category === activeCategory;
+  });
+
   return (
     <main className={styles.main}>
       <div className={styles.hero}>
@@ -47,12 +58,44 @@ export default function ClientApp() {
         </p>
       </div>
       <div className={styles.gridWrapper}>
+        <div className={styles.tabs}>
+          <button
+            type="button"
+            className={activeCategory === "sports" ? styles.tabActive : styles.tab}
+            onClick={function () {
+              setActiveCategory("sports");
+            }}
+          >
+            Sports
+          </button>
+          <button
+            type="button"
+            className={activeCategory === "enterprise" ? styles.tabActive : styles.tab}
+            onClick={function () {
+              setActiveCategory("enterprise");
+            }}
+          >
+            Enterprise
+          </button>
+          <button
+            type="button"
+            className={activeCategory === "crypto" ? styles.tabActive : styles.tab}
+            onClick={function () {
+              setActiveCategory("crypto");
+            }}
+          >
+            Crypto
+          </button>
+        </div>
         <div className={styles.grid}>
-          {teams.map(function (team) {
+          {filteredTeams.map(function (team) {
             return (
               <Link key={team.id} href={`/brand/${team.id}`} className={styles.card}>
                 <div className={styles.cardGlow} />
                 <div className={styles.cardInner}>
+                  <div className={styles.cardLogoWrapper}>
+                    <img src={team.logoUrl} alt={team.name} className={styles.cardLogo} />
+                  </div>
                   <div className={styles.badge}>{team.sport}</div>
                   <h2 className={styles.cardTitle}>{team.name}</h2>
                   <p className={styles.cardMeta}>

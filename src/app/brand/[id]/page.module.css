@@ -30,6 +30,28 @@
   gap: 18px;
 }
 
+.brandHeader {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+}
+
+.brandLogo {
+  width: 84px;
+  height: 84px;
+  border-radius: 18px;
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid rgba(148, 163, 184, 0.6);
+  object-fit: contain;
+  padding: 8px;
+}
+
+.brandHeaderText {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
 .eyebrow {
   font-size: 13px;
   text-transform: uppercase;
@@ -66,6 +88,21 @@
   color: #9ca3af;
 }
 
+.detailRow {
+  display: flex;
+  gap: 8px;
+  font-size: 13px;
+  color: #e5e7eb;
+}
+
+.detailLabel {
+  opacity: 0.8;
+}
+
+.detailValue {
+  font-weight: 500;
+}
+
 .tagline {
   font-size: 16px;
   color: #e5e7eb;
@@ -78,9 +115,27 @@
   gap: 12px;
 }
 
+.questButton {
+  padding: 8px 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(129, 140, 248, 0.9);
+  background: linear-gradient(90deg, rgba(56, 189, 248, 0.2), rgba(139, 92, 246, 0.35));
+  color: #eef2ff;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+}
+
 .backLink {
   font-size: 14px;
   color: #a5b4fc;
+}
+
+.questStatus {
+  margin-top: 8px;
+  font-size: 13px;
+  color: #e5e7eb;
 }
 
 .locked {
