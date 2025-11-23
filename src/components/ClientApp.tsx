@@ -8,7 +8,7 @@ import { useIsSignedIn } from "@coinbase/cdp-hooks";
 import { teams, type BrandCategory } from "@/data/teams";
 
 export default function ClientApp() {
-  const { isSignedIn, isLoading } = useIsSignedIn();
+  const { isSignedIn } = useIsSignedIn();
   const [isClient, setIsClient] = useState(false);
   const [activeCategory, setActiveCategory] = useState<BrandCategory>("sports");
 
@@ -16,7 +16,7 @@ export default function ClientApp() {
     setIsClient(true);
   }, []);
 
-  if (!isClient || isLoading) {
+  if (!isClient) {
     return (
       <main className={styles.main}>
         <div className={styles.hero}>

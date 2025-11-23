@@ -14,7 +14,7 @@ type BrandPageProps = {
 };
 
 export default function BrandPage(props: BrandPageProps) {
-  const { isSignedIn, isLoading } = useIsSignedIn();
+  const { isSignedIn } = useIsSignedIn();
   const [isClient, setIsClient] = useState(false);
   const [questScheduled, setQuestScheduled] = useState(false);
   const [questStatus, setQuestStatus] = useState("");
@@ -24,7 +24,7 @@ export default function BrandPage(props: BrandPageProps) {
     setIsClient(true);
   }, []);
 
-  if (!isClient || isLoading) {
+  if (!isClient) {
     return (
       <div className={styles.page}>
         <main className={styles.main}>
